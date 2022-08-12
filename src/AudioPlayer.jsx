@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
-import AudioControls from "./AudioControls";
-import DashboardContent from "./DashboardContent";
-import SearchBar from "./SearchBar";
+import AudioControls from "./components/AudioControl/AudioControls";
+import DashboardContent from "./components/DashboardContent/DashboardContent";
+import SearchBar from "./components/SeachBar/SearchBar";
 import "./styles.scss";
 import tracks from "./tracks";
 import secondsToTime from "./utils/secondsToTime";
@@ -97,7 +97,7 @@ const AudioPlayer = () => {
       <div className="dashboard">
         <div className="sidebar">hihi</div>
         <div className="dashboard-body">
-          <SearchBar />
+          <SearchBar changeTrack={changeTrack} />
           <DashboardContent
             tracks={tracks}
             changeTrack={changeTrack}
@@ -134,7 +134,7 @@ const AudioPlayer = () => {
               onChange={(e) => onScrub(e.target.value)}
               max={duration ? duration : `${duration}`}
             />
-            <h5>{songDuration ? songDuration : ""}</h5>
+            <h5>{songDuration ? songDuration : null}</h5>
           </div>
         </div>
         <div style={{ width: "30%", padding: "0 1rem" }}>

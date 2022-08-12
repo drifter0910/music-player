@@ -1,7 +1,7 @@
 import React, { Fragment } from "react";
 import "antd/dist/antd.css";
+import "./dashboard-content.scss";
 import { FaPlay, FaPause } from "react-icons/fa";
-
 import { Row, Col } from "antd";
 const DashboardContent = ({ tracks, changeTrack, isPlaying, onPlayPauseClick }) => {
   return (
@@ -9,9 +9,8 @@ const DashboardContent = ({ tracks, changeTrack, isPlaying, onPlayPauseClick }) 
       <Row className="dashboard-content">
         <Col lg={6} md={24} xs={24}>
           <Row className="dashboard__header">
-            {/* <Col lg={24} md={8} className="header__left"> */}
             <Col lg={24} md={8} className={isPlaying ? "header__left rotate" : "header__left"}>
-              <img src={require("./assets/artwork.jpg")} alt="" />
+              <img className="header__left-img" src={require("../../assets/artwork.jpg")} alt="" />
             </Col>
             <Col lg={24} md={16} className="header__content">
               <div>
@@ -40,7 +39,7 @@ const DashboardContent = ({ tracks, changeTrack, isPlaying, onPlayPauseClick }) 
           </Row>
         </Col>
         <Col className="dashboard__tracklist" lg={18} md={24} xs={24}>
-          <div style={{ display: "flex" }}>
+          <div style={{ display: "flex", alignItems: "center" }}>
             <div className="dashboard__mediaL" lg={10}>
               BÀI HÁT
             </div>

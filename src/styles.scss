@@ -34,10 +34,12 @@ html {
   border-radius: 20px;
   font-size: 14px;
   text-transform: uppercase;
-  padding: 8px 2rem;
+  padding: 8px 1rem;
 }
 .sidebar {
   height: calc(100vh - 90px);
+  position: fixed;
+  left: 0;
   z-index: 100;
   width: 15%;
   background-color: hsla(0, 0%, 100%, 0.05);
@@ -46,196 +48,17 @@ html {
 }
 .dashboard-body {
   width: 85%;
+  position: fixed;
+  left: 15%;
 }
 button {
   background: none;
   border: none;
   cursor: pointer;
 }
-.dashboard {
-  display: flex;
-  &-content {
-    display: flex;
-  }
-  &__tracklist {
-    color: white;
-  }
-  &__track {
-    display: flex;
-    align-items: center;
-    cursor: pointer;
-    &:hover {
-      background-color: #3a3343;
-    }
-  }
-  &__mediaL {
-    width: 50%;
-    padding: 8px;
-    display: flex;
-    align-items: center;
-    p {
-      font-size: 14px;
-    }
-    img {
-      width: 40px;
-      height: 40px;
-      border-radius: 4px;
-      margin-right: 8px;
-    }
-  }
-  &__mediaC {
-    padding: 8px;
-    width: 35%;
-  }
-  &__mediaR {
-    padding: 8px;
-    width: 15%;
-  }
-  &__desc {
-    color: var(--text-secondary);
-  }
-  &__header {
-    .header__left {
-      padding: 1rem 2rem;
-      img {
-        animation: rotateBack 0.8s ease;
-        border-radius: 20px;
-        width: 100%;
-      }
-    }
-    .header__left.rotate {
-      img {
-        border-radius: 50%;
-        animation: rotate 10s infinite linear;
-      }
-    }
-    .header__content {
-      text-align: center;
-      p {
-        color: var(--text-secondary);
-        font-size: 14px;
-      }
-    }
-  }
-}
-.header__btn {
-  display: flex;
-  align-items: center;
-  svg {
-    margin-right: 4px;
-  }
-}
-.search-bar {
-  height: 70px;
-  padding: 0 60px;
-  display: flex;
-  align-items: center;
-  form {
-    width: 50%;
-  }
-  &__container {
-    background-color: #2f2639;
-    width: 100%;
-    padding: 8px;
-    display: flex;
-    align-items: center;
-    border-radius: 20px;
-    svg {
-      font-size: 1.5rem;
-    }
-    input {
-      height: 100%;
-      width: 100%;
-      background-color: transparent;
-      border: none;
-      color: #dadada;
-      &:focus {
-        outline: none;
-      }
-    }
-  }
-}
-.audio-player {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  display: flex;
-  width: 100vw;
-  height: 90px;
-  box-shadow: 0 28px 28px rgba(0, 0, 0, 0.2);
-  color: var(--white);
-  padding: 1rem 20px;
-  background-color: #130c1c;
 
-  &__desc {
-    display: flex;
-    width: 30%;
-    align-items: center;
-  }
-  &__track {
-    text-align: center;
-    z-index: 1;
-    width: 40%;
-  }
-  &__artwork {
-    display: block;
-    border-radius: 8px;
-    height: 64px;
-    width: 64px;
-  }
-  &__artist {
-    padding: 0 8px;
-  }
-}
-.backward,
-.forward {
-  font-size: 1.2rem;
-  margin-right: 4px;
-}
-svg {
-  fill: white;
-}
-.audio-controls {
-  display: flex;
-  justify-content: space-between;
-  width: 50%;
-  margin: 0 auto;
-}
-
-.wrap-progress {
-  display: flex;
-  align-items: center;
-}
-
-.audio-controls .prev svg,
-.audio-controls .next svg {
-  width: 15px;
-  height: 15px;
-}
-
-.audio-controls .play svg,
-.audio-controls .pause svg {
-  height: 20px;
-  width: 20px;
-}
-
-.audio-controls path {
-  fill: var(--white);
-}
-
-input[type="range"] {
-  height: 5px;
-  width: 100%;
+.re {
   cursor: pointer;
-}
-input[type="range"]::-ms-track {
-  /*remove bg colour from the track, we'll use ms-fill-lower and ms-fill-upper instead */
-  background: transparent;
-  /*leave room for the larger thumb to overflow with a transparent border */
-  border-color: transparent;
-  border-width: 6px 0;
-  /*remove default tick marks*/
-  color: transparent;
 }
 
 @media (max-width: 992px) {
@@ -276,7 +99,7 @@ input[type="range"]::-ms-track {
 }
 @keyframes rotateBack {
   from {
-    transform: rotate(359deg);
+    transform: rotate(1000deg);
     border-radius: 50%;
   }
   to {

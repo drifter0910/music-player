@@ -1,0 +1,82 @@
+.audio-player {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  width: 100vw;
+  height: 90px;
+  box-shadow: 0 28px 28px rgba(0, 0, 0, 0.2);
+  color: var(--white);
+  padding: 1rem 20px;
+  background-color: #130c1c;
+
+  &__desc {
+    display: flex;
+    width: 30%;
+    align-items: center;
+  }
+  &__track {
+    text-align: center;
+    z-index: 1;
+    width: 40%;
+  }
+  &__artwork {
+    display: block;
+    border-radius: 8px;
+    height: 64px;
+    width: 64px;
+  }
+  &__artist {
+    padding: 0 8px;
+  }
+}
+.backward,
+.forward {
+  font-size: 1.2rem;
+  margin-right: 4px;
+}
+svg {
+  fill: white;
+}
+.audio-controls {
+  display: flex;
+  justify-content: space-between;
+  width: 50%;
+  margin: 0 auto;
+}
+
+.wrap-progress {
+  display: flex;
+  align-items: center;
+}
+
+.audio-controls .prev svg,
+.audio-controls .next svg {
+  width: 15px;
+  height: 15px;
+}
+
+.audio-controls .play svg,
+.audio-controls .pause svg {
+  height: 20px;
+  width: 20px;
+}
+
+.audio-controls path {
+  fill: var(--white);
+}
+
+input[type="range"] {
+  height: 5px;
+  width: 100%;
+  cursor: pointer;
+}
+input[type="range"]::-ms-track {
+  /*remove bg colour from the track, we'll use ms-fill-lower and ms-fill-upper instead */
+  background: transparent;
+  /*leave room for the larger thumb to overflow with a transparent border */
+  border-color: transparent;
+  border-width: 6px 0;
+  /*remove default tick marks*/
+  color: transparent;
+}

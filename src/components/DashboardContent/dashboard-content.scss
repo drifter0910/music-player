@@ -1,0 +1,107 @@
+.dashboard {
+  display: flex;
+  &-content {
+    display: flex;
+  }
+  &__tracklist {
+    color: white;
+    overflow-y: scroll;
+    height: calc(100vh - 160px);
+  }
+  &__track {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    &:hover {
+      background-color: #3a3343;
+    }
+  }
+  &__mediaL {
+    width: 50%;
+    padding: 8px;
+    display: flex;
+    align-items: center;
+    p {
+      font-size: 14px;
+    }
+    img {
+      width: 40px;
+      height: 40px;
+      border-radius: 4px;
+      margin-right: 8px;
+    }
+  }
+  &__mediaC {
+    padding: 8px;
+    width: 35%;
+  }
+  &__mediaR {
+    padding: 8px;
+    width: 15%;
+  }
+  &__desc {
+    color: var(--text-secondary);
+  }
+  &__header {
+    padding: 1rem 2rem;
+
+    .header__left,
+    .header__left .rorate {
+      overflow: hidden;
+      border-radius: 20px;
+
+      img {
+        animation: rotateBack 0.6s ease;
+        border-radius: 20px;
+        width: 100%;
+        cursor: pointer;
+        transition: all 0.5s ease;
+      }
+      &-img {
+        &:hover {
+          -webkit-transform: scale3d(1.2, 1.2, 1);
+          transform: scale3d(1.2, 1.2, 1);
+        }
+      }
+    }
+    .header__left.rotate {
+      img {
+        border-radius: 50%;
+        animation: rotate 10s infinite linear;
+      }
+    }
+    .header__content {
+      text-align: center;
+      p {
+        color: var(--text-secondary);
+        font-size: 14px;
+      }
+    }
+  }
+}
+.header__btn {
+  display: flex;
+  align-items: center;
+  svg {
+    margin-right: 4px;
+  }
+}
+/* width */
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #170f24;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
