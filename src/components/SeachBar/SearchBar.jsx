@@ -1,10 +1,10 @@
-import React, { useEffect, useRef } from "react";
-import { useState } from "react";
-import { AiOutlineArrowLeft, AiOutlineArrowRight, AiOutlineSearch } from "react-icons/ai";
-import tracks from "../../tracks";
-import "./Searchbar.scss";
+import React, { useEffect, useRef } from 'react';
+import { useState } from 'react';
+import { AiOutlineArrowLeft, AiOutlineArrowRight, AiOutlineSearch } from 'react-icons/ai';
+import tracks from '../../tracks';
+import './Searchbar.scss';
 const SearchBar = ({ changeTrack }) => {
-  const [input, setInput] = useState("");
+  const [input, setInput] = useState('');
   const [results, setResults] = useState([]);
   const [displayRes, setDisplayRes] = useState(false);
   const formRef = useRef();
@@ -18,7 +18,7 @@ const SearchBar = ({ changeTrack }) => {
   }, [input]);
   const search = () => {
     const res = tracks.filter((track) => {
-      if (input === "") {
+      if (input === '') {
         setDisplayRes(false);
         return null;
       } else if (track.title.toLowerCase().includes(input.toLowerCase())) {
@@ -39,15 +39,15 @@ const SearchBar = ({ changeTrack }) => {
         setDisplayRes(false);
       }
     };
-    document.addEventListener("mousedown", handler);
+    document.addEventListener('mousedown', handler);
     return () => {
-      document.removeEventListener("mousedown", handler);
+      document.removeEventListener('mousedown', handler);
     };
   }, []);
   const handleChangeTrack = (id) => {
     changeTrack(id - 1);
     setDisplayRes(false);
-    setInput("");
+    setInput('');
   };
   return (
     <div className="search-bar">
@@ -69,14 +69,16 @@ const SearchBar = ({ changeTrack }) => {
             type="text"
             placeholder="Tìm kiếm bài hát"
           />
-          <div className={displayRes ? "search-bar__result display" : "search-bar__result"}>
-            {results.length > 0
-              ? results.map((result) => (
-                  <div onClick={() => handleChangeTrack(result.id)} className="re" key={result.id}>
-                    {result.title}
-                  </div>
-                ))
-              : "No match results"}
+          <div className={displayRes ? 'search-bar__result display' : 'search-bar__result'}>
+            {results.length > 0 ? (
+              results.map((result) => (
+                <p onClick={() => handleChangeTrack(result.id)} className="re" key={result.id}>
+                  {result.title}
+                </p>
+              ))
+            ) : (
+              <p>No match results</p>
+            )}
           </div>
         </div>
       </form>

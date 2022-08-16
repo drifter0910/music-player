@@ -7,13 +7,13 @@ const SideBar = () => {
     <div className="sidebar">
       <img className="sidebar-logo" src={logo} alt="" />
       <ul className="sidebar__menu">
-        <Link to={''}>
+        <Link to={'/'}>
           <li>
             <img className="sidebar__itemImg" src={require('../../assets/1.PNG')} alt="" />
             <p>Cá nhân</p>
           </li>
         </Link>
-        <Link to={''}>
+        <Link to={'hihi'}>
           <li>
             <img className="sidebar__itemImg" src={require('../../assets/2.PNG')} alt="" />
             <p>Khám phá</p>
