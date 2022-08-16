@@ -48,6 +48,9 @@ svg {
 .wrap-progress {
   display: flex;
   align-items: center;
+  input {
+    margin: 0 8px;
+  }
 }
 
 .audio-controls .prev svg,

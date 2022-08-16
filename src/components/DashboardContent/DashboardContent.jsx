@@ -9,10 +9,15 @@ const DashboardContent = ({ tracks, changeTrack, isPlaying, onPlayPauseClick }) 
       <Row className="dashboard-content">
         <Col lg={6} md={24} xs={24}>
           <Row className="dashboard__header">
-            <Col lg={24} md={8} className={isPlaying ? "header__left rotate" : "header__left"}>
+            <Col
+              lg={24}
+              md={6}
+              xs={8}
+              className={isPlaying ? "header__left rotate" : "header__left"}
+            >
               <img className="header__left-img" src={require("../../assets/artwork.jpg")} alt="" />
             </Col>
-            <Col lg={24} md={16} className="header__content">
+            <Col lg={24} md={18} xs={16} className="header__content">
               <div>
                 <h2>Nhạc được yêu thích</h2>
                 <p>Cập nhật: 11/08/2022</p>

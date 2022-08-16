@@ -36,16 +36,7 @@ html {
   text-transform: uppercase;
   padding: 8px 1rem;
 }
-.sidebar {
-  height: calc(100vh - 90px);
-  position: fixed;
-  left: 0;
-  z-index: 100;
-  width: 15%;
-  background-color: hsla(0, 0%, 100%, 0.05);
-  padding-top: 70px;
-  padding-bottom: 54px;
-}
+
 .dashboard-body {
   width: 85%;
   position: fixed;
@@ -75,10 +66,14 @@ button {
   .header__left {
     padding: 1rem 1rem !important;
   }
+  .dashboard__tracklist {
+    overflow-y: scroll;
+    height: calc(100vh - 400px);
+  }
 }
 @media (max-width: 600px) {
   .header__content {
-    padding: 1rem 2rem;
+    padding: 4px 4px 4px 8px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -86,6 +81,41 @@ button {
     p {
       text-align: start;
     }
+    h2 {
+      text-align: start;
+      font-size: 18px;
+    }
+  }
+  .header__left {
+    display: flex;
+    align-items: center;
+    padding: 0 4px !important;
+  }
+  .sidebar {
+    display: none;
+  }
+  .dashboard-body {
+    left: 0;
+    width: 100%;
+  }
+  .dashboard__header {
+    display: flex;
+    padding: 4px 4px;
+  }
+  .audio-player {
+    &__desc {
+      width: 40%;
+    }
+    &__track {
+      width: 60%;
+    }
+    &__right {
+      display: none !important;
+    }
+  }
+  .dashboard__tracklist {
+    overflow-y: scroll;
+    height: calc(100vh - 352px);
   }
 }
 

@@ -1,19 +1,18 @@
-import React, { useState, useEffect, useRef } from "react";
-import AudioControls from "./components/AudioControl/AudioControls";
-import DashboardContent from "./components/DashboardContent/DashboardContent";
-import SearchBar from "./components/SeachBar/SearchBar";
-import "./styles.scss";
-import tracks from "./tracks";
-import secondsToTime from "./utils/secondsToTime";
+import React, { useState, useEffect, useRef } from 'react';
+import AudioControls from './components/AudioControl/AudioControls';
+import DashboardContent from './components/DashboardContent/DashboardContent';
+import SearchBar from './components/SeachBar/SearchBar';
+import SideBar from './components/SideBar/SideBar';
+import './styles.scss';
+import tracks from './tracks';
+import secondsToTime from './utils/secondsToTime';
 const AudioPlayer = () => {
   // State
   const [trackIndex, setTrackIndex] = useState(0);
   const [trackProgress, setTrackProgress] = useState(0);
   const [isPlaying, setIsPlaying] = useState(false);
-
   // Destructure for conciseness
   const { title, artist, audioSrc, image } = tracks[trackIndex];
-
   //Ref
   const audioRef = useRef(new Audio(audioSrc));
   const intervalRef = useRef();
@@ -95,7 +94,7 @@ const AudioPlayer = () => {
   return (
     <React.Fragment>
       <div className="dashboard">
-        <div className="sidebar">hihi</div>
+        <SideBar />
         <div className="dashboard-body">
           <SearchBar changeTrack={changeTrack} />
           <DashboardContent
@@ -137,7 +136,7 @@ const AudioPlayer = () => {
             <h5>{songDuration ? songDuration : null}</h5>
           </div>
         </div>
-        <div style={{ width: "30%", padding: "0 1rem" }}>
+        <div className="audio-player__right" style={{ width: '30%', padding: '0 1rem' }}>
           <h2>...</h2>
         </div>
       </div>
