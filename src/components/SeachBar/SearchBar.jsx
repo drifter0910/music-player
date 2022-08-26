@@ -90,7 +90,7 @@ const SearchBar = ({ changeTrack, setToggle, toggle }) => {
         </div>
       </form>
       <button>
-        <Bar onClick={() => setToggle(!toggle)} />
+        <Bar className="mobile-bar" onClick={() => setToggle(!toggle)} />
       </button>
       {/* <img
         style={{ width: '30px', color: 'white', fill: 'white' }}

@@ -20,12 +20,12 @@ const DashboardContent = () => {
               <img className="header__left-img" src={require('../../assets/artwork.jpg')} alt="" />
             </Col>
             <Col lg={24} md={18} xs={16} className="header__content">
-              <div>
+              <div className="header__content-top">
                 <h2>Nhạc được yêu thích</h2>
                 <p>Cập nhật: 11/08/2022</p>
                 <p>520 người yêu thích</p>
               </div>
-              <div>
+              <div className="header__content-bottom">
                 <button
                   style={{ marginTop: '1rem' }}
                   className="btn-primary"
