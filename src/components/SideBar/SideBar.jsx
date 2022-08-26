@@ -1,25 +1,44 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import './SideBar.scss';
 import logo from '../../assets/logo.svg';
+import logoMob from '../../assets/logo-mob.svg';
 import { Link } from 'react-router-dom';
-const SideBar = () => {
+import { ReactComponent as SideBar1 } from '../../assets/sidebar1.svg';
+import { ReactComponent as SideBar2 } from '../../assets/sidebar2.svg';
+
+const SideBar = ({ toggle, setToggle }) => {
+  const sidebarRef = useRef();
+  useEffect(() => {
+    const handler = (e) => {
+      if (!sidebarRef.current.contains(e.target)) {
+        setToggle(false);
+      }
+    };
+    window.addEventListener('mousedown', handler);
+    return () => {
+      window.removeEventListener('mousedown', handler);
+    };
+  }, []);
+
   return (
-    <div className="sidebar">
-      <img className="sidebar-logo" src={logo} alt="" />
-      <ul className="sidebar__menu">
-        <Link to={'/'}>
-          <li>
-            <img className="sidebar__itemImg" src={require('../../assets/1.PNG')} alt="" />
-            <p>Cá nhân</p>
-          </li>
-        </Link>
-        <Link to={'hihi'}>
-          <li>
-            <img className="sidebar__itemImg" src={require('../../assets/2.PNG')} alt="" />
-            <p>Khám phá</p>
-          </li>
-        </Link>
-        <Link to={''}>
+    <div className={toggle ? 'sidebar-modal show' : 'sidebar-modal'}>
+      <div ref={sidebarRef} className="sidebar">
+        <img className="sidebar-logo" src={logo} alt="" />
+        <img className="sidebar-logo-mob" src={logoMob} alt="" />
+        <ul className="sidebar__menu">
+          <Link to={'/'}>
+            <li>
+              <SideBar1 />
+              <p>Cá nhân</p>
+            </li>
+          </Link>
+          <Link to={'albums'}>
+            <li>
+              <SideBar2 />
+              <p>Albums</p>
+            </li>
+          </Link>
+          {/* <Link to={''}>
           <li>
             <img className="sidebar__itemImg" src={require('../../assets/3.PNG')} alt="" />
             <p>Zing chart</p>
@@ -36,8 +55,9 @@ const SideBar = () => {
             <img className="sidebar__itemImg" src={require('../../assets/5.PNG')} alt="" />
             <p>Theo dõi</p>
           </li>
-        </Link>
-      </ul>
+        </Link> */}
+        </ul>
+      </div>
     </div>
   );
 };

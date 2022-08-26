@@ -1,0 +1,23 @@
+.albums {
+  height: calc(100vh - 160px);
+  overflow-y: scroll;
+  img {
+    width: 100%;
+    border-radius: 6px;
+    transition: all 0.8s ease;
+    &:hover {
+      -webkit-transform: scale3d(1.2, 1.2, 1);
+      transform: scale3d(1.2, 1.2, 1);
+    }
+  }
+  &__item {
+    cursor: pointer;
+    padding: 1rem;
+    &-wrap {
+      overflow: hidden;
+      border-radius: 6px;
+    }
+  }
+  p {
+  }
+}

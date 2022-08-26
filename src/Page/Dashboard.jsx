@@ -1,8 +1,7 @@
-import React, { useEffect, useContext } from 'react';
+import React, { useEffect, useContext, useState } from 'react';
 import AudioControls from '../components/AudioControl/AudioControls';
 import SideBar from '../components/SideBar/SideBar';
 import '../styles.scss';
-import tracks from '../tracks';
 import SearchBar from '../components/SeachBar/SearchBar';
 import { Outlet } from 'react-router-dom';
 import TrackContext from '../context/AudioContext';
@@ -24,9 +23,10 @@ const AudioPlayer = () => {
     isReady,
     intervalRef,
     audioRef,
+    album,
   } = useContext(TrackContext);
   // Destructure for conciseness
-  const { title, artist, audioSrc, image } = tracks[trackIndex];
+  const { title, artist, audioSrc, image } = album[trackIndex];
   const currentTime = audioRef.current.currentTime;
   const duration = audioRef.current.duration;
   let minute = Math.floor(currentTime / 60);
@@ -52,7 +52,7 @@ const AudioPlayer = () => {
     } else {
       isReady.current = true;
     }
-  }, [trackIndex]);
+  }, [trackIndex, album]);
   // Pause and clean up on unmount
   useEffect(() => {
     return () => {
@@ -60,13 +60,14 @@ const AudioPlayer = () => {
       clearInterval(intervalRef.current);
     };
   }, []);
+  const [toggle, setToggle] = useState(false);
 
   return (
     <React.Fragment>
       <div className="dashboard">
-        <SideBar />
+        <SideBar toggle={toggle} setToggle={setToggle} />
         <div className="dashboard-body">
-          <SearchBar changeTrack={changeTrack} />
+          <SearchBar setToggle={setToggle} toggle={toggle} changeTrack={changeTrack} />
           <Outlet />
         </div>
       </div>

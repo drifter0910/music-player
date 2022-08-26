@@ -2,10 +2,23 @@
   height: calc(100vh - 90px);
   position: fixed;
   left: 0;
+  top: 0;
   z-index: 100;
   width: 15%;
-  background-color: #231c2e;
-  padding: 1.5rem;
+
+  .sidebar-logo {
+    display: block;
+  }
+  .sidebar-logo-mob {
+    display: none;
+  }
+  background-color: gray;
+  li {
+    flex-direction: row;
+  }
+  p {
+    display: inline-block;
+  }
   ul {
     list-style: none;
     padding: 0;
@@ -14,15 +27,38 @@
   li {
     display: flex;
     align-items: center;
-    padding: 4px 0;
+    padding: 6px 1.5rem;
     cursor: pointer;
     &:hover {
+      background-color: #40384f;
     }
   }
   &-logo {
     width: 100%;
+    padding: 1.5rem;
+  }
+  &-logo-mob {
+    width: 50px;
   }
   &__itemImg {
     width: 35px;
   }
+  &-logo-mob {
+    display: none;
+  }
+  svg {
+    fill: white;
+    color: white;
+    width: 35px;
+    height: 35px;
+  }
+  li {
+    display: flex;
+    justify-content: space-evenly;
+    width: 100%;
+  }
+}
+
+path {
+  fill: var(--white);
 }

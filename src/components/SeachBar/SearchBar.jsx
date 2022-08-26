@@ -1,13 +1,18 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useContext, useEffect, useRef } from 'react';
 import { useState } from 'react';
 import { AiOutlineArrowLeft, AiOutlineArrowRight, AiOutlineSearch } from 'react-icons/ai';
-import tracks from '../../tracks';
+import { useNavigate } from 'react-router-dom';
+import TrackContext from '../../context/AudioContext';
+import { ReactComponent as Bar } from '../../assets/bar.svg';
 import './Searchbar.scss';
-const SearchBar = ({ changeTrack }) => {
+const SearchBar = ({ changeTrack, setToggle, toggle }) => {
   const [input, setInput] = useState('');
   const [results, setResults] = useState([]);
   const [displayRes, setDisplayRes] = useState(false);
   const formRef = useRef();
+  const searchBarRef = useRef();
+  const { album } = useContext(TrackContext);
+  const navigate = useNavigate();
   useEffect(() => {
     const timeoutId = setTimeout(() => {
       search();
@@ -17,7 +22,7 @@ const SearchBar = ({ changeTrack }) => {
     };
   }, [input]);
   const search = () => {
-    const res = tracks.filter((track) => {
+    const res = album.filter((track) => {
       if (input === '') {
         setDisplayRes(false);
         return null;
@@ -35,8 +40,10 @@ const SearchBar = ({ changeTrack }) => {
     let handler = (event) => {
       if (formRef.current.contains(event.target)) {
         setDisplayRes(true);
+        searchBarRef.current.classList.add('collapse');
       } else {
         setDisplayRes(false);
+        searchBarRef.current.classList.remove('collapse');
       }
     };
     document.addEventListener('mousedown', handler);
@@ -53,14 +60,14 @@ const SearchBar = ({ changeTrack }) => {
     <div className="search-bar">
       <div className="search-bar__nav">
         <button className="backward">
-          <AiOutlineArrowLeft />
+          <AiOutlineArrowLeft onClick={() => navigate(-1)} />
         </button>
         <button className="forward">
-          <AiOutlineArrowRight />
+          <AiOutlineArrowRight onClick={() => navigate(1)} />
         </button>
       </div>
       <form ref={formRef} action="" onSubmit={handleSubmit}>
-        <div className="search-bar__container">
+        <div ref={searchBarRef} className="search-bar__container">
           <AiOutlineSearch />
           <input
             className="search-input"
@@ -82,6 +89,14 @@ const SearchBar = ({ changeTrack }) => {
           </div>
         </div>
       </form>
+      <button>
+        <Bar onClick={() => setToggle(!toggle)} />
+      </button>
+      {/* <img
+        style={{ width: '30px', color: 'white', fill: 'white' }}
+        src={require('../../assets/bar.png')}
+        alt=""
+      /> */}
     </div>
   );
 };

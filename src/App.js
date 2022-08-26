@@ -1,28 +1,15 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import Dashboard from './Page/Dashboard';
 import DashboardContent from './components/DashboardContent/DashboardContent';
-import tracks from './tracks';
-import Hihi from './Page/Hihi';
-import TrackContext from './context/AudioContext';
+import Albums from './Page/Albums';
 const App = () => {
-  const { changeTrack, isPlaying, setIsPlaying } = useContext(TrackContext);
   return (
     <div className="app">
       <Routes>
         <Route path="/" element={<Dashboard />}>
-          <Route
-            path=""
-            element={
-              <DashboardContent
-                tracks={tracks}
-                changeTrack={changeTrack}
-                onPlayPauseClick={setIsPlaying}
-                isPlaying={isPlaying}
-              />
-            }
-          />
-          <Route path="hihi" element={<Hihi />} />
+          <Route path="" element={<DashboardContent />} />
+          <Route path="albums" element={<Albums />} />
         </Route>
       </Routes>
     </div>

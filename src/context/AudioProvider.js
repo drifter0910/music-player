@@ -1,16 +1,20 @@
 import React, { useRef, useState } from 'react';
-import tracks from '../tracks';
+import { albums } from '../tracks';
 import TrackContext from './AudioContext';
 const AudioProvider = ({ children }) => {
   const [trackIndex, setTrackIndex] = useState(0);
   const [trackProgress, setTrackProgress] = useState(0);
   const [isPlaying, setIsPlaying] = useState(false);
+  const [album, setAlbums] = useState(albums[0]);
   // Destructure for conciseness
-  const { audioSrc } = tracks[trackIndex];
+  const { audioSrc } = album[trackIndex];
   //Ref
   const audioRef = useRef(new Audio(audioSrc));
   const intervalRef = useRef();
   const isReady = useRef(false);
+  const changeAlbum = (index) => {
+    setAlbums(albums[index]);
+  };
   const startTimer = () => {
     // Clear any timers already running
     clearInterval(intervalRef.current);
@@ -24,13 +28,13 @@ const AudioProvider = ({ children }) => {
   };
   const prevTrack = () => {
     if (trackIndex === 0) {
-      setTrackIndex(tracks.length - 1);
+      setTrackIndex(album.length - 1);
     } else {
       setTrackIndex(trackIndex - 1);
     }
   };
   const nextTrack = () => {
-    if (trackIndex === tracks.length - 1) {
+    if (trackIndex === album.length - 1) {
       setTrackIndex(0);
     } else {
       setTrackIndex(trackIndex + 1);
@@ -69,6 +73,8 @@ const AudioProvider = ({ children }) => {
         isReady,
         intervalRef,
         audioRef,
+        album,
+        changeAlbum,
       }}
     >
       {children}

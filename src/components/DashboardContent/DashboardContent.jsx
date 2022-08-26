@@ -1,9 +1,11 @@
-import React, { Fragment } from "react";
-import "antd/dist/antd.css";
-import "./dashboard-content.scss";
-import { FaPlay, FaPause } from "react-icons/fa";
-import { Row, Col } from "antd";
-const DashboardContent = ({ tracks, changeTrack, isPlaying, onPlayPauseClick }) => {
+import React, { Fragment, useContext } from 'react';
+import 'antd/dist/antd.css';
+import './dashboard-content.scss';
+import { FaPlay, FaPause } from 'react-icons/fa';
+import { Row, Col } from 'antd';
+import TrackContext from '../../context/AudioContext';
+const DashboardContent = () => {
+  const { changeTrack, isPlaying, setIsPlaying, album } = useContext(TrackContext);
   return (
     <Fragment>
       <Row className="dashboard-content">
@@ -13,9 +15,9 @@ const DashboardContent = ({ tracks, changeTrack, isPlaying, onPlayPauseClick }) 
               lg={24}
               md={6}
               xs={8}
-              className={isPlaying ? "header__left rotate" : "header__left"}
+              className={isPlaying ? 'header__left rotate' : 'header__left'}
             >
-              <img className="header__left-img" src={require("../../assets/artwork.jpg")} alt="" />
+              <img className="header__left-img" src={require('../../assets/artwork.jpg')} alt="" />
             </Col>
             <Col lg={24} md={18} xs={16} className="header__content">
               <div>
@@ -25,9 +27,9 @@ const DashboardContent = ({ tracks, changeTrack, isPlaying, onPlayPauseClick }) 
               </div>
               <div>
                 <button
-                  style={{ marginTop: "1rem" }}
+                  style={{ marginTop: '1rem' }}
                   className="btn-primary"
-                  onClick={() => onPlayPauseClick(!isPlaying)}
+                  onClick={() => setIsPlaying(!isPlaying)}
                 >
                   {isPlaying ? (
                     <div className="header__btn">
@@ -44,14 +46,14 @@ const DashboardContent = ({ tracks, changeTrack, isPlaying, onPlayPauseClick }) 
           </Row>
         </Col>
         <Col className="dashboard__tracklist" lg={18} md={24} xs={24}>
-          <div style={{ display: "flex", alignItems: "center" }}>
+          <div style={{ display: 'flex', alignItems: 'center' }}>
             <div className="dashboard__mediaL" lg={10}>
               BÀI HÁT
             </div>
             <div className="dashboard__mediaC">ALBUM</div>
             <div className="dashboard__mediaR">THỜI GIAN</div>
           </div>
-          {tracks.map((track, index) => (
+          {album.map((track, index) => (
             <div onClick={() => changeTrack(index)} key={index} className="dashboard__track">
               <div className="dashboard__mediaL" key={index}>
                 <img src={track.image} alt="" />

@@ -1,12 +1,16 @@
 .dashboard {
   display: flex;
+  &-body {
+    height: calc(100% - var(--audioPlayer));
+  }
+
   &-content {
     display: flex;
+    height: calc(100% - 70px);
   }
   &__tracklist {
     color: white;
     overflow-y: scroll;
-    height: calc(100vh - 160px);
   }
   &__track {
     display: flex;
