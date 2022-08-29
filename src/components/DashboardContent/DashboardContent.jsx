@@ -1,7 +1,7 @@
 import React, { Fragment, useContext } from 'react';
 import 'antd/dist/antd.css';
 import './dashboard-content.scss';
-import { FaPlay, FaPause } from 'react-icons/fa';
+import { FaPlay, FaPause, FaMusic } from 'react-icons/fa';
 import { Row, Col } from 'antd';
 import TrackContext from '../../context/AudioContext';
 const DashboardContent = () => {
@@ -9,7 +9,7 @@ const DashboardContent = () => {
   return (
     <Fragment>
       <Row className="dashboard-content">
-        <Col lg={6} md={24} xs={24}>
+        <Col lg={7} md={24} xs={24}>
           <Row className="dashboard__header">
             <Col
               lg={24}
@@ -45,7 +45,7 @@ const DashboardContent = () => {
             </Col>
           </Row>
         </Col>
-        <Col className="dashboard__tracklist" lg={18} md={24} xs={24}>
+        <Col className="dashboard__tracklist" lg={17} md={24} xs={24}>
           <div style={{ display: 'flex', alignItems: 'center' }}>
             <div className="dashboard__mediaL" lg={10}>
               BÀI HÁT
@@ -56,6 +56,7 @@ const DashboardContent = () => {
           {album.map((track, index) => (
             <div onClick={() => changeTrack(index)} key={index} className="dashboard__track">
               <div className="dashboard__mediaL" key={index}>
+                <FaMusic style={{ marginRight: '8px' }} />
                 <img src={track.image} alt="" />
                 <div>
                   <p>{track.title}</p>

@@ -52,11 +52,11 @@
     .header__left .rorate {
       overflow: hidden;
       width: 100%;
-      border-radius: 20px;
+      border-radius: 10px;
       text-align: center;
       img {
         animation: rotateBack 0.6s ease;
-        border-radius: 20px;
+        border-radius: 10px;
         width: 100%;
         max-width: 500px;
         cursor: pointer;
@@ -84,9 +84,29 @@
     }
   }
 }
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(359deg);
+  }
+}
+@keyframes rotateBack {
+  from {
+    transform: rotate(720deg);
+    border-radius: 50%;
+  }
+  to {
+    transform: rotate(0deg);
+    border-radius: 20px;
+  }
+}
+
 .header__btn {
   display: flex;
   align-items: center;
+  color: white;
   svg {
     margin-right: 4px;
   }

@@ -214,22 +214,3 @@ button {
     width: 100%;
   }
 }
-
-@keyframes rotate {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(359deg);
-  }
-}
-@keyframes rotateBack {
-  from {
-    transform: rotate(1000deg);
-    border-radius: 50%;
-  }
-  to {
-    transform: rotate(0deg);
-    border-radius: 20px;
-  }
-}
