@@ -1,9 +1,9 @@
-import React, { Fragment, useContext } from 'react';
+import { Col, Row } from 'antd';
 import 'antd/dist/antd.css';
-import './dashboard-content.scss';
-import { FaPlay, FaPause, FaMusic } from 'react-icons/fa';
-import { Row, Col } from 'antd';
+import React, { Fragment, useContext } from 'react';
+import { FaMusic, FaPause, FaPlay } from 'react-icons/fa';
 import TrackContext from '../../context/AudioContext';
+import './dashboard-content.scss';
 const DashboardContent = () => {
   const { changeTrack, isPlaying, setIsPlaying, album } = useContext(TrackContext);
   return (
@@ -17,7 +17,11 @@ const DashboardContent = () => {
               xs={8}
               className={isPlaying ? 'header__left rotate' : 'header__left'}
             >
-              <img className="header__left-img" src={require('../../assets/artwork.jpg')} alt="" />
+              <img
+                className="header__left-img"
+                src={'https://static-zmp3.zmdcdn.me/skins/common/logo600.png'}
+                alt=""
+              />
             </Col>
             <Col lg={24} md={18} xs={16} className="header__content">
               <div className="header__content-top">

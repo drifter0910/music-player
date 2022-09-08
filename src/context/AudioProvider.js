@@ -7,6 +7,11 @@ const AudioProvider = ({ children }) => {
   const [isPlaying, setIsPlaying] = useState(false);
   const [album, setAlbums] = useState(albums[0]);
   // Destructure for conciseness
+  const [allTracks, setAllTracks] = useState(
+    albums.reduce((prevValue, currentValue) => {
+      return prevValue.concat(currentValue);
+    })
+  );
   const { audioSrc } = album[trackIndex];
   //Ref
   const audioRef = useRef(new Audio(audioSrc));

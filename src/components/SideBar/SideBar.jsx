@@ -38,13 +38,13 @@ const SideBar = ({ toggle, setToggle }) => {
               <p>Albums</p>
             </li>
           </Link>
+          {/* <Link to={'alltracks'}>
+            <li>
+              <SideBar2 />
+              <p>All Tracks</p>
+            </li>
+          </Link> */}
           {/* <Link to={''}>
-          <li>
-            <img className="sidebar__itemImg" src={require('../../assets/3.PNG')} alt="" />
-            <p>Zing chart</p>
-          </li>
-        </Link>
-        <Link to={''}>
           <li>
             <img className="sidebar__itemImg" src={require('../../assets/4.PNG')} alt="" />
             <p>Radio</p>
@@ -55,7 +55,7 @@ const SideBar = ({ toggle, setToggle }) => {
             <img className="sidebar__itemImg" src={require('../../assets/5.PNG')} alt="" />
             <p>Theo dõi</p>
           </li>
-        </Link> */}
+        </Link>  */}
         </ul>
       </div>
     </div>
