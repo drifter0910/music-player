@@ -1,10 +1,10 @@
-import React, { useEffect, useContext, useState } from 'react';
-import AudioControls from '../components/AudioControl/AudioControls';
-import SideBar from '../components/SideBar/SideBar';
-import '../styles.scss';
-import SearchBar from '../components/SeachBar/SearchBar';
+import React, { useContext, useEffect, useState } from 'react';
 import { Outlet } from 'react-router-dom';
+import AudioControls from '../components/AudioControl/AudioControls';
+import SearchBar from '../components/SeachBar/SearchBar';
+import SideBar from '../components/SideBar/SideBar';
 import TrackContext from '../context/AudioContext';
+import '../styles.scss';
 import secondsToTime from '../utils/secondsToTime';
 
 const AudioPlayer = () => {
@@ -75,7 +75,8 @@ const AudioPlayer = () => {
         <div className="audio-player__desc">
           <img className="audio-player__artwork" src={image} alt="" />
           <div className="audio-player__artist">
-            <p>{title}</p>
+            <p className="title">{title}</p>
+            <marquee className="title-mobile">{title}</marquee>
             <p>{artist}</p>
           </div>
         </div>
